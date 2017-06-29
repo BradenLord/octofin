@@ -1,0 +1,202 @@
+Game ideas:
+
+Here are the stats/counters/tags
+
+Tags determine what counters and other stats apply to an attack.  Every attack can have one combat syle and multiple damage types. 
+For attacks with multiple types the stats the modifers are averaged from all involved.
+Tags:
+Combat styles - Melee, Ranged, Magic
+Normal Damage Type - Pierce, Slash, Blunt
+Elemental Damage Type - Fire, Ice, Electric, Nature, Light, Dark
+
+Combat Stats~
+Accuracy - Ignores Defence
+Focus - Ignores Resistance
+Defence - Reduces Normal Damage
+Resistance - Reduces Elemental Damage
+Vitality - Maximum Hitpoints
+
+Strength Modifiers~
+Might - % Damage bonus to Melee
+Precision - % Damage bonus to Ranged
+Power - % Damage bonus to Magic
+
+Avoidance Modifiers~
+Blocking - % Chance to avoid Melee Damage
+Deflection - % Chance to avoid Ranged Damage
+Absorbtion - % Chance to avoid Magic damgae
+
+Utility Modifiers~
+Regeneration - % Bonus to hitpoint  recovery
+Speed - % Bonus to movement speed
+Stamina - % Bonus to stamina recovery
+Savagery - % chance to crit
+Lethality - % bonus damage crits do
+
+
+Counters:
+
+Bonuses stack with greater than linear increase (in both directions)
+Damage and Combat Syle counters do NOT stack with each other (in terms of linear increase)Negative counters do the same, but remove stats.
+
+Max counters: -20 to 20
+
+First %: 1%
+First Minimum Bonus: 5
+First Secondary %: 0%
+
+Max %: 50%
+Max Minimum Bonus: 250
+Max Secondary %: 25%
+
+Secondary bonus starts at 10 counters
+
+Damage Counters~
+Applies to damage type if tagged on attack.
+Attack counter - %Increase to Accuracy or Focus (whichever applies), minimum flat bonus.  Increases strength with many stacks.
+Defence counter - %Increase to Defence or Resistance (whichever applies),  minimum flat bonus.  Increases avoidance with many stacks.
+
+Combat Style Counters~
+Applies to combat style if tagged on attack.
+Attack counter - %Increase to Accuracy and Focus, minimum flat bonus.  Increases strength (whichever applies) with many stacks.
+Defence counter - %Increase to Defence and Resistance, minimum flat bonus.  Increases avoidance (whichever applies) with many stacks.
+
+Example:
+Steel Curiass:
+
++50 defence
+-15 resistance
++200 Hitpoints
+-5 Magic Attack Counters
+-2 Range Attack Counters
+-3 Magic Defence Counters
++3 Pierce Defence Counters
++1 Slash Defence Counters
+
+
+Skill Trees:
+
+Can spec out general tree and one specific tree from each type.
+Enough skill points to spec out 3 trees total.
+
+Tactics - Some all purpose moves.  Some specialization for ranged attacks (thrown/bows).
+Berserker - All out attacking!  Specializing in two handed weapons and swinging attacks.  May learn Fire/Electric special attacks.
+Knight - Defensive bulwark.  Specializes in one handed axes and bludgeons (and shield attacks!).  May learn Light/Nature special attacks.
+Bladedancer - Critical attacks and combos.  Specializes in blades, polearms and thrusting attacks.  May learn Dark/Ice special attacks.
+
+Magical Arts - All purpose tree with general skills and buffs, (Chromatic magic that uses all elements at once?)
+Chaos - Uses Fire/Dark attacks.  
+Balance - Uses Nature/Ice attacks.
+Justice - Light/Electric attacks.
+
+Quality and Rarity
+Qualities: Excellent, Strong, Good, Average, Poor, Weak, Damaged
+% effect of positive base stats/modifiers: 50, 25, 10, 0, -10, -25, -50
+Does not effect special/effect bonuses or counters
+
+Rarities: Very Common, Common, Uncommon, Rare, Epic, Elite, Legendary
+Colors: Grey, White, Green, Blue, Purple, Yellow, Orange
+
+Items would have three tags:
+Equipment type (Consumable, Weapon, Upper Body, ect), Subtype (depends on main type) and the Material Type (Metals, Lethers, or 'unique')
+
+Battle text colors
+Damage: White
+Critical: Red
+Heal: Green
+Avoidance: Blue
+Mez/Cc/negative status: Orange (eq Stunned!)
+Buffs/Other: Yellow
+
+Damage Type Colors:
+Pierce: Red
+Slash: Yellow
+Crush: Brown
+Fire: Orange
+Ice: Cyan
+Nature: Green
+Electricity: Purple
+LIght: White
+Dark: Black 
+
+Elemental icons (with colors mentioned above):
+Pierce: Sword Stabbing up
+Slash: Diagonal Sword
+Crush: Clenched armored fist punching down
+Fire: Flame
+Ice: Snowflake
+Nature: Tree
+Electricity: Lightning Bolt
+Light: Angel Wing Profile
+Dark: Skull
+
+Use Icon Framework for skill icons (because there are googd ones).
+Weapon/Stat Icons in a similar style (but made custom)
+
+Random weapon unique boni
+Higher chance with higher quality of weapon.
+3 Tiers, up to 3 Slots available
+Same with secondaries!
+
+Two handed weapons should have access to more bonus slots to compensate.
+
+Armor has Set bonuses?
+Accessories have set bonuses?
+
+Certain generic tiered set boni that certain armor/accessories have a chance to belong to.
+
+Item levels:
+Items have levels (1-1000 (and more maybe))
+
+Items have base stats that do not change and dynamic stats.
+Base stats used for negatives or unique boni accross item levels
+Dynamic stats scale the same for every item, but each item has a set of ratios for each stat (0.0 - 2.0) that is a multiplier
+Quality and Rarity have additional multipliers on top of this.
+
+Items have a minimum and maximum item level. 
+Higher levels of crafting yeild higher item levels of items.
+
+Enemy levels
+Enemies have levels too (1- 1000 (and more maybe))
+
+Enemies' items' levels will be close to their level
+same with their drops
+
+Enemies have base stats and dynamic stats like items, except each enemy has a defined stat gain per level.
+
+Enemies also have a 'quality' (only positive).  Increases dynamic stats and relative item levels (equipped and loot)
+Base names for these, but each enemy can override.  These labels are prefixed to the name.
+(Normal, Veteran, Elite)
+
+Player has average item and skill level.
+Skill level based on number of skill points used, average item level for average of all items equipped.
+
+Equpiment can have random stat bonues from rank 1-10 (eg Iron Curiass of +3 Defence)
+More likely and more likely to be higher rank with rarity.  Scales with item level and quality (not rarity)
+on the same equipment scale.
+
+Example full item name:
+Damaged Vampyric Flaming Royal Longsword of +10 Strength
+
+
+Non-combat skills:
+Adventuring
+Uncovering hidden passages in environments, better rates/etc at resource nodes.  Food prep
+Use unique "Tool" class of items
+
+Crafting:
+Making all sorts of items.  Converting raw materials (gathered from Adventuring) into material
+in order to craft with.
+
+Other stuff:
+Should be able to exanmine corpses of fallen foes to see items/stats
+
+Ability (for large monsters) that allow them to use two handed weapons one handed
+
+Town centers (require you to do quests for them to enter)
+where you can buy/sell goods/equipment for materials and trade materials
+
+Weapon types:
+Blade, Axe, Bludgeon, Polearm, Magical (staffs, wands etc), Thrown, Bow
+Styles:
+One Handed, Two Handed
