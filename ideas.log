@@ -37,7 +37,7 @@ Lethality - % bonus damage crits do
 Counters:
 
 Bonuses stack with greater than linear increase (in both directions)
-Damage and Combat Syle counters do NOT stack with each other (in terms of linear increase)Negative counters do the same, but remove stats.
+Damage and Combat Syle counters do NOT stack with each other (in terms of linear increase) Negative counters do the same, but remove stats.
 
 Max counters: -20 to 20
 
