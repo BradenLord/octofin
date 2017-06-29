@@ -1,0 +1,16 @@
+sceneSetups:
+- path: Assets/Octofin/Scenes/MainLoading.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Octofin/Scenes/DemoArena.unity
+  isLoaded: 1
+  isActive: 1
+- path: Assets/Octofin/Scenes/MainMenu.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Octofin/Scenes/Editor.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Octofin/Scenes/Overworld.unity
+  isLoaded: 0
+  isActive: 0

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0419E82-95EE-4C5F-8281-A9F0D10456AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Octofin.Core</RootNamespace>
+    <AssemblyName>Octofin.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Actors\Player.cs" />
+    <Compile Include="Assets\Color.cs" />
+    <Compile Include="Assets\Icon.cs" />
+    <Compile Include="Utility\Cache\BinaryData.cs" />
+    <Compile Include="Items\Enhancement.cs" />
+    <Compile Include="Items\Equipment.cs" />
+    <Compile Include="Items\Material.cs" />
+    <Compile Include="Items\Slot.cs" />
+    <Compile Include="Items\EquipmentSet.cs" />
+    <Compile Include="Items\Subtypes\Subtype.cs" />
+    <Compile Include="Items\Subtypes\WeaponSubtype.cs" />
+    <Compile Include="Items\Weapon.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Quality.cs" />
+    <Compile Include="Mechanics\Combat\Attack.cs" />
+    <Compile Include="Mechanics\Combat\Damage.cs" />
+    <Compile Include="Mechanics\Combat\DamageType.cs" />
+    <Compile Include="Mechanics\Stats.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Cache\CacheCounter.cs" />
+    <Compile Include="Utility\Cache\DataCache.cs" />
+    <Compile Include="Utility\Cache\DataException.cs" />
+    <Compile Include="Utility\Log.cs" />
+    <Compile Include="Utility\Game.cs" />
+    <Compile Include="World\World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
