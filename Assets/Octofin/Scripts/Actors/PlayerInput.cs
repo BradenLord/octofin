@@ -25,5 +25,19 @@ public class PlayerInput : MonoBehaviour {
         {
             actor.Jump();
         }
+
+        if(Input.GetAxis("ActivatePrimary") == 1)
+        {
+            actor.ActivatePrimary();
+        }
+
+        if (Input.GetAxis("Crouch") == 1)
+        {
+            actor.SetCrouching(true);
+        }
+        else
+        {
+            actor.SetCrouching(false);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,38 +7,53 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ActorMovement : MonoBehaviour {
 
-    public float moveSpeed = 4f;
-    public float defaultSpeed = 2f;
+    public float maxSpeed = 4f;
 
+    public float moveForce = 100f;
+    public float averageForce = 70f;    // Factor by which the axis force is compared to determine animation speed
     public float jumpForce = 200f;
     public float airControlRatio = 0.5f;     // Factor by which horizontal movement is damped (or enhanced) when not grouded
+
+    public bool canMove = true;
 
     public bool grounded;
     public LayerMask groundLayer;
 
+    public bool crouching;
+
     public bool hovering = false;  // Allows 8-directional control in the air
+    public float hoverDrag = 2;
 
-    public bool canMove = true;  // If the actor is in the middle of another non-interruptable sequence/animation or is in hitstun
-
-    private float launchVelocity = 0; // Consenserves horizontal momentum when in the air
+    public float weaponSpeed = 1; // Shouldn't be here eventually
 
     private Rigidbody2D rigidBody;
     private CircleCollider2D feetCollider;
     private Animator animator;
 
 	void Awake () {
+
         rigidBody = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
+
+        animator.SetFloat("WeaponSpeed", weaponSpeed);
     }
-	
-	void FixedUpdate () {
+
+    void FixedUpdate() {
 
         grounded = !hovering && feetCollider.IsTouchingLayers(groundLayer);
 
-        if(grounded || hovering)
+        if (Mathf.Abs(rigidBody.velocity.x) > maxSpeed)
         {
-            launchVelocity = 0;
+            rigidBody.velocity = new Vector2(Mathf.Sign(rigidBody.velocity.x) * maxSpeed, rigidBody.velocity.y);
+        }
+
+        if (hovering)
+        { 
+            if (Mathf.Abs(rigidBody.velocity.y) > maxSpeed)
+            {
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, Mathf.Sign(rigidBody.velocity.y) * maxSpeed);
+            }
         }
 
         animator.SetBool("Grounded", grounded);
@@ -55,19 +69,18 @@ public class ActorMovement : MonoBehaviour {
             return;
         }
 
-        float xVelocity = movementAxes.x * moveSpeed;
-        float yVelocity = movementAxes.y * moveSpeed;
+        float xForce = movementAxes.x * moveForce;
+        float yForce = movementAxes.y * moveForce;
 
         if (grounded)
         {
-            bool walking = !hovering && (Math.Abs(xVelocity) > 0);
+            bool walking = !hovering && (Mathf.Abs(xForce) > 0);
             animator.SetBool("Walking", walking);
         }
         else
         {
-            xVelocity *= airControlRatio;
-            xVelocity += launchVelocity;
-            yVelocity *= airControlRatio;
+            xForce *= airControlRatio;
+            yForce *= airControlRatio;
         }
 
         if (grounded || hovering)
@@ -77,46 +90,93 @@ public class ActorMovement : MonoBehaviour {
 
             if (relativeFocal > 0)
             {
-                scale.x = Math.Abs(scale.x);
+                scale.x = Mathf.Abs(scale.x);
             }
             else if (relativeFocal < 0)
             {
-                scale.x = -Math.Abs(scale.x);
+                scale.x = -Mathf.Abs(scale.x);
             }
 
             transform.localScale = scale;
 
-            //If velocity is zero the animator will crash
-            if(Math.Abs(xVelocity) > 0.01) 
+            //If force is zero the animator will crash
+            if(Mathf.Abs(xForce) > 0.01) 
             {
-                float movementRatio = moveSpeed / defaultSpeed * (scale.x / Math.Abs(scale.x)) * (xVelocity / Math.Abs(xVelocity));
+                float movementRatio = moveForce / averageForce * Mathf.Sign(scale.x) * Mathf.Sign(xForce);
                 animator.SetFloat("MovementRatio", movementRatio);
             }
         }
 
-        if(hovering)
+        if (!crouching)
         {
-            rigidBody.velocity = new Vector2(xVelocity, yVelocity);
-            rigidBody.gravityScale = 0;
+            if (movementAxes.x * rigidBody.velocity.x < maxSpeed)
+            {
+                rigidBody.AddForce(Vector2.right * xForce);
+            }
+
+            if (hovering)
+            {
+                rigidBody.gravityScale = 0;
+                rigidBody.drag = hoverDrag;
+
+                if (movementAxes.y * rigidBody.velocity.y < maxSpeed)
+                {
+                    rigidBody.AddForce(Vector2.up * yForce);
+                }
+            }
+            else
+            {
+                rigidBody.gravityScale = 1;
+                rigidBody.drag = 0;
+            }
         }
-        else
+    }
+
+    public void ActivatePrimary()
+    {
+        if (canMove)
         {
-            rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
-            rigidBody.gravityScale = 1;
+            SetCanMove(false);
+            animator.SetTrigger("WeaponSwing");
         }
+    }
+
+    public void DeactivatePrimary()
+    {
+        SetCanMove(true);
     }
 
     public void Jump()
     {
-        if(grounded && !hovering && canMove)
+        if(canMove && grounded && !hovering && !crouching)
         {
-            Launch(new Vector2(0, jumpForce));
-            launchVelocity = rigidBody.velocity.x;
+            Launch(Vector2.up * jumpForce);
         }
     }
 
     public void Launch(Vector2 force)
     {
         rigidBody.AddForce(force);
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+        animator.SetBool("CanMove", canMove);
+    }
+
+    public void SetCrouching(bool crouching)
+    {
+        if (crouching && grounded && canMove)
+        {
+            this.crouching = true;
+            animator.SetBool("Crouching", true);
+        }
+
+        if (!crouching)
+        {
+            this.crouching = false;
+            animator.SetBool("Crouching", false);
+        }
     }
 }
