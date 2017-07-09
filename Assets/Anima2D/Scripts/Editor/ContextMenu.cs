@@ -13,6 +13,7 @@ namespace Anima2D
 		[MenuItem("Assets/Create/Anima2D/SpriteMesh", true)]
 		static bool ValidateCreateSpriteMesh(MenuCommand menuCommand)
 		{
+
 			bool valid = false;
 
 			Sprite sprite = Selection.activeObject as Sprite;
@@ -29,6 +30,7 @@ namespace Anima2D
 			return valid;
 		}
 
+        // This be the one that do the work
 		[MenuItem("Assets/Create/Anima2D/SpriteMesh", false)]
 		static void CreateSpriteMesh(MenuCommand menuCommand)
 		{
@@ -36,12 +38,14 @@ namespace Anima2D
 
 			foreach(Texture2D texture in selectedTextures)
 			{
-				SpriteMeshUtils.CreateSpriteMesh(texture);
+                Debug.Log("Texture path");
+                SpriteMeshUtils.CreateSpriteMesh(texture);
 			}
 
 			if(selectedTextures.Count == 0)
 			{
-				SpriteMeshUtils.CreateSpriteMesh(Selection.activeObject as Sprite);
+                // Yar, this be the one we want
+                SpriteMeshUtils.CreateSpriteMesh(Selection.activeObject as Sprite);
 			}
 		}
 		

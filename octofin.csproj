@@ -84,14 +84,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Anima2D\Examples\Scripts\CharacterMotion.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\Follow.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SkinnedMeshCombiner.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpringBone.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpringCollider.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpringManager.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpriteCycle.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpriteCycleParallax.cs" />
     <Compile Include="Assets\Anima2D\Scripts\Bone2D.cs" />
     <Compile Include="Assets\Anima2D\Scripts\Control.cs" />
     <Compile Include="Assets\Anima2D\Scripts\EditorUpdaterProxy.cs" />
@@ -105,6 +97,13 @@
     <Compile Include="Assets\Anima2D\Scripts\MathUtils.cs" />
     <Compile Include="Assets\Anima2D\Scripts\Pose.cs" />
     <Compile Include="Assets\Anima2D\Scripts\PoseManager.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\BindInfo.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\BlendShape.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\BlendShapeFrame.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\IndexedEdge.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\RuntimeSpriteMesh.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\RuntimeUtils.cs" />
+    <Compile Include="Assets\Anima2D\Scripts\Runtime\SpriteMeshData.cs" />
     <Compile Include="Assets\Anima2D\Scripts\SpriteMesh.cs" />
     <Compile Include="Assets\Anima2D\Scripts\SpriteMeshAnimation.cs" />
     <Compile Include="Assets\Anima2D\Scripts\SpriteMeshInstance.cs" />
@@ -112,6 +111,8 @@
     <Compile Include="Assets\Octofin\Scripts\Actors\Behaviors\PrimaryActiveBehavior.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\PlayerInput.cs" />
     <Compile Include="Assets\Octofin\Scripts\DataCacheLoader.cs" />
+    <Compile Include="Assets\Octofin\Scripts\DynamicBones.cs" />
+    <Compile Include="Assets\Octofin\Scripts\DynamicSpriteLoader.cs" />
     <Compile Include="Assets\Octofin\Scripts\Effects\SpriteTrail.cs" />
     <Compile Include="Assets\Octofin\Scripts\Effects\SpriteTrailObject.cs" />
     <Compile Include="Assets\Octofin\Scripts\GameName.cs" />
@@ -150,8 +151,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\WarpTextExample.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
-    <None Include="Assets\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
     <None Include="Assets\Anima2D\Licenses.txt" />
     <None Include="Assets\Anima2D\Readme.txt" />
     <None Include="Assets\Anima2D\Version.txt" />

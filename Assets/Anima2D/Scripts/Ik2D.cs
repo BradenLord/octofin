@@ -91,15 +91,16 @@ namespace Anima2D
 			set { m_OrientChild = value; }
 		}
 
+        // Should not need this during runtime, but we'll see
 		void OnDrawGizmos()
 		{
-			Gizmos.matrix = transform.localToWorldMatrix;
+			//Gizmos.matrix = transform.localToWorldMatrix;
 
 			if(enabled && target && numBones > 0)
 			{
-				Gizmos.DrawIcon(transform.position,"ikGoal");
+				//Gizmos.DrawIcon(transform.position,"ikGoal");
 			}else{
-				Gizmos.DrawIcon(transform.position,"ikGoalDisabled");
+				//Gizmos.DrawIcon(transform.position,"ikGoalDisabled");
 			}
 		}
 

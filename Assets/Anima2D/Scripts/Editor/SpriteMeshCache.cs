@@ -258,6 +258,7 @@ namespace Anima2D
 			RevertChanges();
 		}
 		
+        // This is also important
 		public void ApplyChanges()
 		{
 			if(spriteMeshData)
@@ -867,6 +868,8 @@ namespace Anima2D
 			}
 		}
 		
+
+        // This looks pretty googd
 		public void BindBone(Bone2D bone)
 		{
 			if(spriteMeshInstance && bone)
