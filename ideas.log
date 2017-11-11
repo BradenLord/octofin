@@ -200,3 +200,302 @@ Weapon types:
 Blade, Axe, Bludgeon, Polearm, Magical (staffs, wands etc), Thrown, Bow
 Styles:
 One Handed, Two Handed
+
+World Map:
+
+Predefined shape with guaranteed features (location of The Cataclysm and Ocean is known).  Regions themselves randomized.
+Player would randomly start on a region type of their choice (effects starting equipment)
+Strategic balance of region/environment types to ensure that game has all content required. All environments will have a minumum preplaced globally, afterwhich percentages come into play.
+Quest maps spawn in any region (distance from player determined by the quest, quest message/log will roughly imply how close it is/was to the region in which it was discovered).
+All quests in known territory will show up on map (can be clicked to locate in quest log!)
+
+Settlement quests, for example, will likely have a range of 0, maybe 1 and will be treated as Side quests.
+Side quests are random.  Settlements would provide most, but can maybe find them in the wild (not sure how yet).
+
+In the base game Oceans would be non-navigatable (water tiles, lakes, could appear on the map)
+
+Basic Region Types based on a matching of Temperature and Wetness
+
+Temperatures - Arid/Temperate/Arctic
+Wetness - Wet/Average/Dry
+
+9 base possibilites:
+
+Arid/Wet - Jungle
+Arid/Average - Desert
+Arid/Dry - Desert
+
+Temperate/Wet - Swamp
+Temperate/Average - Forest
+Temperate/Dry - Plains
+
+Arctic/Wet - Forest
+Arctic/Average - Tundra 
+Arctic/Dry - Arctic (heavy snow/glaciers)
+
+Mountains and Lakes possible anywhere (override territory)
+
+Lakes are "Cold Water" in Arctic, "Warm Water" otherwise
+Mountains change slightly based on temperature (mostly aesthetically)
+Mountains most likely in Arid?
+
+Arid most likely to be Dry
+Temperate most likely to be Average
+Arctic most likely to be Dry
+(Wet is rarer in general)
+
+Graphics:
+Parchment effect for base:
+Region discovered, name is displayed (map-like, cuz clicking on region will pop up with extra info)
+Region gets slight tint, small terrain-based features are added in (as well as more detail in zoomout mode)
+
+When environment/settlement is discovered it shows up on the region physically
+
+Map made up of hexes.  Each region made up of multiple hexes
+Each hex can be barren or have a feature (settlemen/environment)
+
+1 guaranteed space for a potential settlement
+1 guaranteed space for quest things
+1 guaranteed environment per region
+
+Therefore 3 is the minimum size
+Travel costs based on terrain type; cost per hex
+
+Ocean, Cataclysm and the surrounding Rift are special
+Can't enter the of the Cataclysm region unless you explore rest of the Cataclysm
+
+Regions are homogeneous unless they are special regions (ocean, cata, etc)
+
+Have to unlock access to certian terrain (aka have item in possesion to enter)
+Lakes require swimming enhancement
+Rift requires the endgame item
+
+Biome/Wetness map is relatively normal, except for regions touching the rift (rift is in the center of map, so cold area surrounds it)
+
+Unique territory always starts on the map
+
+Alive settlements have 3 stats
+Trust
+Development
+Wealth
+
+0-10 Scale (Probably bigger numbers for more nuance)
+
+Trust starts from 0-4, 5 Trust required to enter town (levels debatable)
+Trust gained by doing missions for the Town Guards
+Trust 8 required to get settlement-enhancing missions from settlement (deets below)
+Would go down over time.
+
+Development - Determines how many people are in the settlement.  Likely
+4 settlement types:
+0 - Ruins -  If settlement reaches 0 it is destroyed! (would usually only happen with events)
+1 - Village
+4 - Town
+8 - City
+
+This would influence what buildings in the settlement the player can use
+eg. Market might only show up at 2 development.  This can be improved
+by doing missions for the Mayor (with 8 trust)
+Fluctuates naturally over time.
+
+Wealth - Determines how favorable it is to barter in a settlement and the
+quality of goods available.
+0 - Would mean bartering would almost be non-existient and when it is at extreme rates
+1-10 - Higher numbers mean better (and more exotic!) goods and cheaper prices for the player
+Quests to improve it would be available from Guildmaster (with 8 trust)
+
+Certain global events would trigger that could drastically change this stats (player would probably be notified)
+Eg: 
+Earthquake reduces Development and Wealth by a decent chunk
+Bandit Raid reduces trust slightly and Wealth by a good amount.
+Bumper Crop increases Development a decent amount and wealth slightly.
+
+Skill and Stats and Damage rethink
+
+Damage Types:
+
+Pierce
+Slash
+Blunt
+Bleed
+Poison
+Fire
+Ice
+Electric
+Nature 
+Light 
+Dark
+
+Slight changes to stat
+
+Combat Stats~
+Accuracy - Ignores Defence
+Focus - Ignores Resistance
+Defence - Reduces Physical Damage
+Resistance - Reduces Magical Damage
+Vitality - Maximum Hitpoints
+
+Damage Modifiers~
+Might - % Damage bonus to Physical
+Power - % Damage bonus to Magical
+Savagery - % chance to crit with Physical damage
+Lethality - % bonus damage Physical crits do
+Mastery - % chance to crit with Magical damage
+Execution - % bonus damage Magical crits do
+
+Avoidance Modifiers~
+Deflection - % Chance to avoid Physical Damage
+Absorption - % Chance to avoid Magical Damage
+
+(Side note: Avoidance would roll for each damage type separately)
+
+Utility Modifiers~
+Regeneration - % Bonus to hitpoint recovery
+Speed - % Bonus to movement speed
+Stamina - % Bonus to Skill recharge rate
+
+Damage Type Modifiers (no counters, screw counters)
+Each damage type has modifiers for Combat/Damage/Avoidance stats
+
+Example:
+
+Stat Modifiers (Apply to both Physical and Magical):
+
+          (sword)	     (shield)
+Slash    + 10 ( 1% )	+ 5 ( 0.5% )
+
+In this case this would mean that you gain a +10 Affinity and +1% Damage for Slash damage
+and +5 Protection and +0.5% Avoidance when defending against Slash damage.
+
+          (sword)	     (shield)
+Fire      + 10 ( 1% )	 + 5 ( 0.5% )
+
+In this case this would mean that you gain a +10 Affinity and +1% Damage for Fire damage
+and +5 Resistance and +0.5% Avoidance when defending against Fire damage.
+
+No Skill Trees or talents
+
+Skills have to be 'found' or 'discovered' apart from a basic set of skills.
+Skills and Equipment require certain ability scores.
+
+Skill effects/damage scale with a relevant stat and ability level
+
+Each Skill/Weapon attack MUST be tied to at least one damage type and whether they are Magic/Physical damage (one attack cannot be both Physical and Magical at the same time) 
+
+Ability Scores and their effects:
+
+Character:
+
+Strength - Allows use of heavy weapons and armour.  Each point increases Might slightly. 
+Agility - Allows use of light/delicate weapons and armour.  Each point increases Speed and Stamina slightly.
+Wisdom - Allows use of magical weapons and armour.  Each point increases Power slightly.  
+Charisma - Improves bartering and rewards from quests.
+Crafting - Improves ability to craft Armour/Weapons/Accessories/Consumables/etc and makes repairing cheaper
+Survivalism -  Improves ability to gather resources and loot from fallen foes.
+
+Combat:
+
+Proficiency - Used to unlock most Physical skills.  Each point increases Accuracy slightly.
+
+Finesse - Unlocks skills that dexterously use weapons.  Each point increases Pierce/Slash/Blunt Affinity and Deflection slightly.
+Bravery - Unlocks skills that aggressively use weapons.  Each point increases Savagery and Lethality slightly.
+Resolve - Unlocks skills to defend yourself.  Each point increases Pierce/Slash/Blunt Protection and Regeneration slightly.
+Cunning - Unlocks skills involving Bleed and Poison.  Each point increases Bleed/Poison Affinity and Protection slightly.
+
+Magic:
+
+Sourcery - Used to unlock most Magical skills.  Each point increases Focus slightly.
+
+Purity - Unlocks skills that use Light magic.  Each point increases Light Affinity and Protection slightly.
+Desecration - Unlocks skills that use Dark magic.  Each point increases Dark Affinity and Protection slightly.
+Druidism - Unlocks skills that use Nature magic.  Each point increases Nature Affinity and Protection slightly.
+Pyrokinesis - Unlocks skills that use Fire magic.  Each point increases Fire Affinity and Protection slightly.
+Cryotheurgy - Unlocks skills that use Ice magic.  Each point increases Ice Affinity and Protection slightly.
+Thundramancy - Unlocks skills that use Electric magic.  Each point increases Electric Affinity and Protection slightly.
+
+Each AP is bought with XP
+XP scale for each ability individually and a global increase for each AP purchased.
+
+Ability points start at 0 and cap at 100.
+
+Armour commonly gives vitality (no vitality gained by ability score)
+
+Lore:
+
+Medieval Era tech, but NOT european tech
+Greek-like people (name) - Inhabit temperate areas - Identify with Purity - Commonly Vanguards (Resolve/Bravery), bonus to Strength
+Chinese-like people (name) - Inhabit arctic/mountains - Identify with Cryotheurgy - Commonly Monks (Finesse/Resolve), bonus to Agility
+Moorish-like people (name) - Inhabits desert/arid areas - Identify with Pyrokinesis - Commonly Corsairs (Bravery/Cunning), bonus to Charisma
+Viking-like people (name) - Inhabits the sky - Identify with Thundramancy - Commonly Heroes (Bravery/Finesse), bonus to Crafting
+Celtic-like people (name) - Inhabits the water - Identify with Druidism - Commonly Pathfinders (Resolve/Cunning), bonus to Wisdom
+Hunnic-like people (name) - Nomads that can be anywhere (yes even sky/sea albiet rarely) - Identify with Desecration - Commonly Rogues (Cunning/Finesse), bonus to Survivalism
+
+Players pick a race (sky/water people would be 'half-breeds' or 'forsaken'.  Something that doesn't start with wings/gills), melee class and mage class to start.
+
+Main story line:
+
+Main Quest:
+    Rebirth of Civilization
+
+You are a strong adventurer of your people.  Word from travelling merchants has just reached your town of a human community known, as Sanctuary.  This city is to be the capital of
+the world's first modern kingdom ushering in a return to civilization.
+	
+You search the map for Sanctuary (spawns quite far away from starting location) and when you find it you see it is in ruins.  Bodies are strewn as if a massive battle had taken place.
+	
+Main Quest:
+	Seeker of Truth
+	
+In Sanctuary you find a nearly collapsed building with several wounded, but alive people inside.  The elder tells you that an unknown army weilding powerful magic killed and destroyed everything here.  He tells
+you of a wise old Sage that may know who these soldiers were and how to stop them.  After you finish talking a Prisma Soldier (likely the first one you've seen unless you grinded for a long time) enters and you must defeat him. 
+
+Main Quest:
+	The Silver Serpent
+	
+You find the sage in a run-down stone tower filled with books (read some for lore?).  The Sage welcomes you, but does not immediately trust you.  You must prove yourself worthy of his secrets.  
+He wants you to bring him the head of [Romulus?], the leader of the Silver Legion.  You must find Romulus' fortress, gain access and defeat him.
+
+The Silver Legion are an all inclusive band of rouges/mercenaries that take in those not accepted in/not fit for common life.  Their weapons, training and motivations may be better than common bandits, but their actions
+are not as they plunder, pillage, and rob to get what they need.  Romulus is an middle-adged fellow that offers you some sympathy (he knows about the destruction of Sanctuary), but he can't let you live as he sees you as a threat.
+
+You take his head as a trophy. Once you return the Sage is most pleased saying "No one man has been worthy of my knowledge in nearly 1000 years".  He tells you about the Prisma Soldiers and how their magic is linked
+to direct exposure to the rift in the cataclysm.  To defeat the Prisma Soldiers you must close the gate to the Otherworld in the cataclysm.
+
+Main Quest:
+	Unlocking the Way
+	
+The Sage tells you of a magical Prisma Key that can seal the gate.  This key requires the sacred stones of each element to work.  Each culture has one such stone and you must seek them out by
+any means. 
+
+These stones are guarded by elite warriors of each culture in a sacred location.  You can get the stones by building trust with that culture (helping settlements/travelers) or by killing the guards
+(omega hard).  There might be some different sub-quests based on each culture to gain their trust (along with the base culture trust mechanic).
+
+Main Quest:
+	Sealing Destiny
+	
+You give the sage the stones and key combines them with the holder/base that he has.  He tells you you must find the epicenter of the cataclysm and use this key on the rift that was opened there.
+The Prisma key is one of the few ways to pass the barrier in the Rift surrounding the epicenter.
+A Prisma boss breaks into the tower and kills the Sage (sage is super weak).  You have to fight him afterwards.  Prisma Soldiers will now appear more often (very rare before) as they can sense the power 
+eminating from the Prisma Key. They will likely allude to that fact (calling the player "Keybearer").  This will be a threat forever basically, even after the Old Man and General are defeated there are 
+still plenty of Insane Prisma soldiers roaming the world.
+
+The epicenter is home to a otherworldly castle.  At its top is a very old man who is guarding the portal.  He is the leader of the Prisma soldiers and has been absorbing the power of the rift for many
+centuries, making him mad (crazy).  He thinks he is helping the world by using the magic to stop the evil created by the portal.  Closing the portal would be more effective, but he's addicted to the portal's magic.
+You learn that all Prisma Soldiers are affected in the same way except for a General (and the General's immediate suboordinates) that refuse to use the Prisma magic. After you defeat the old man he comes to his senses
+and realises what he's done.  He also tells you that he and the Sage were not human (why they lived for thousands of years) and actually originated from the lands on the other side of the portal (why the sage knows how
+to close the cataclysm).  Being in this world renders their kind weak and frail (hence the old looking appearance) unless they absorb a large amount of magical essence from their world which unfortunately makes them insane.
+He asks you to defeat the General and her forces and to close the gate; giving you a key to the General's Castle.  After he dies  you use the key on the Otherworld altar there turning the key into the Otherworld
+key and closing the portal.  If you try to open the Otherworld portal you'll get self dialogue saying "I don't want to do that; yet" implying possible future content.
+
+Main Quest:
+	The Iron Fist
+	
+You find the General's castle.  She and her men don't use Prisma magic because it would make them mad, but they suggest ideas to the Prisma Soldiers because while unstable they are a very powerful tool.  The General's
+ultimate goal is to become the martial ruler of the known world.  She wants to accomplish this by destroying any attempts of human sovereignty (why she destroyed Sanctuary at the cost of most of her men) as she grows her
+power and numbers.  After you defeat her she tells you the reason for her goals.  This world needs a strong military leader to face the evil that has been growing in the Otherworld.  An evil that the Old Man
+sensed and warned her about.  Leaders of towns/cities mocked and exiled her for working with the "tainted magic" of the Rift so she took the matter into her hands as the rulers of this world would not be properly prepared.
+A matter that then passes on to you.
+
+Fortunately the altar is sealed for now and the world is safe (end of the base story).  You will still see ocassional insane prisma soldiers in the world (less the before, but not less than base).  
+
+Leads into good additional content for the Otherworld!
+

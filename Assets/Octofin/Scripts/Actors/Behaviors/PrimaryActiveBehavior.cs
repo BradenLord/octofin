@@ -17,7 +17,7 @@ public class PrimaryActiveBehavior : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ActorMovement actor = animator.gameObject.GetComponent<ActorMovement>();
+        ActorController actor = animator.gameObject.GetComponent<ActorController>();
         actor.DeactivatePrimary();
     }
 

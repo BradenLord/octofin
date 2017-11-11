@@ -107,9 +107,11 @@
     <Compile Include="Assets\Anima2D\Scripts\SpriteMesh.cs" />
     <Compile Include="Assets\Anima2D\Scripts\SpriteMeshAnimation.cs" />
     <Compile Include="Assets\Anima2D\Scripts\SpriteMeshInstance.cs" />
-    <Compile Include="Assets\Octofin\Scripts\Actors\ActorMovement.cs" />
+    <Compile Include="Assets\Octofin\Scripts\Actors\ActorController.cs" />
+    <Compile Include="Assets\Octofin\Scripts\Actors\Behaviors\BlockBehaviour.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\Behaviors\PrimaryActiveBehavior.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\PlayerInput.cs" />
+    <Compile Include="Assets\Octofin\Scripts\Actors\SpriteManager.cs" />
     <Compile Include="Assets\Octofin\Scripts\DataCacheLoader.cs" />
     <Compile Include="Assets\Octofin\Scripts\DynamicBones.cs" />
     <Compile Include="Assets\Octofin\Scripts\DynamicSpriteLoader.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Assets\Octofin\Scripts\Effects\SpriteTrailObject.cs" />
     <Compile Include="Assets\Octofin\Scripts\GameName.cs" />
     <Compile Include="Assets\Octofin\Scripts\QuitOnClick.cs" />
+    <Compile Include="Assets\Octofin\Scripts\RotateToMouse.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />

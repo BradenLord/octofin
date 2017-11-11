@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ActorMovement))]
+[RequireComponent(typeof(ActorController))]
 public class PlayerInput : MonoBehaviour {
 
     public float debugJump;
 
-    private ActorMovement actor;  //Actor in scene to affect with player input
+    private ActorController actor;  //Actor in scene to affect with player input
 
 	void Awake ()
     {
-        actor = GetComponent<ActorMovement>();
+        actor = GetComponent<ActorController>();
     }
 
     private void FixedUpdate()
@@ -38,6 +38,15 @@ public class PlayerInput : MonoBehaviour {
         else
         {
             actor.SetCrouching(false);
+        }
+
+        if (Input.GetAxis("ActivateSecondary") == 1)
+        {
+            actor.SetBlocking(true);
+        }
+        else
+        {
+            actor.SetBlocking(false);
         }
     }
 }
