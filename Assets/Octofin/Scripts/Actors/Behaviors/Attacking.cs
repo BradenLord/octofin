@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehavior : StateMachineBehaviour {
+public class Attacking : StateMachineBehaviour {
 
     private ActorController controller;
 

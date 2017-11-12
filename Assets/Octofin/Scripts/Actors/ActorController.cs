@@ -33,11 +33,14 @@ public class ActorController : MonoBehaviour {
     public bool hurt = false;
     public bool alive = true;
 
-    public float weaponSpeed = 1; 
+    public float weaponSpeed = 1;
+
+    public bool pointFollow = true;
 
     private Rigidbody2D rigidBody;
     private CircleCollider2D feetCollider;
     private Animator[] animators;
+    private Rotator[] rotators;
 
     private bool attacking = false;
 
@@ -46,6 +49,7 @@ public class ActorController : MonoBehaviour {
         rigidBody = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<CircleCollider2D>();
         animators = GetComponentsInChildren<Animator>();
+        rotators = GetComponentsInChildren<Rotator>();
 
         UpdateAnimatorVariable("CanMove", canMove);
         UpdateAnimatorVariable("Alive", alive);
@@ -68,6 +72,28 @@ public class ActorController : MonoBehaviour {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, Mathf.Sign(rigidBody.velocity.y) * maxSpeed);
             }
         }
+
+        if (pointFollow)
+        {
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            Vector2 offset = new Vector2();
+
+            if (transform.localScale.x >= 0)
+            {
+                offset.x = worldMousePosition.x - transform.position.x;
+                offset.y = worldMousePosition.y - transform.position.y;
+            }
+            else
+            {
+                offset.x = transform.position.x - worldMousePosition.x;
+                offset.y = transform.position.y - worldMousePosition.y;
+            }
+
+            float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg * Mathf.Sign(transform.localScale.x);
+
+            ApplyRotation(angle);
+        }
     }
 
     public void Move(Vector2 movementAxes, float focalX)
@@ -82,13 +108,16 @@ public class ActorController : MonoBehaviour {
 
         if (grounded)
         {
-            this.running = !hovering && (Mathf.Abs(xForce) > 0);
+            running = !hovering && (Mathf.Abs(xForce) > 0);
             UpdateAnimatorVariable("Running", running);
         }
         else
         {
             xForce *= airControlRatio;
             yForce *= airControlRatio;
+
+            running = false;
+            UpdateAnimatorVariable("Running", running);
         }
 
         if (grounded || hovering)
@@ -227,6 +256,22 @@ public class ActorController : MonoBehaviour {
         }
     }
 
+    //By Default does NOT reset position
+    public void SetPointFollow(bool pointFollow)
+    {
+        SetPointFollow(pointFollow, false);
+    }
+
+    public void SetPointFollow(bool pointFollow, bool resetPostion)
+    {
+        this.pointFollow = pointFollow;
+
+        if (resetPostion)
+        {
+            ApplyRotation(0);
+        }
+    }
+
     public void UpdateAnimatorVariable(string name, bool value)
     {
         foreach (Animator animator in animators)
@@ -249,6 +294,32 @@ public class ActorController : MonoBehaviour {
         {
             animator.ResetTrigger(name);
             animator.SetTrigger(name);
+        }
+    }
+
+    public void ApplyRotation(float angle)
+    {
+        foreach (Rotator rotator in rotators)
+        {
+            rotator.Rotate(angle);
+        }
+    }
+
+    public void EnableAnimation()
+    {
+        foreach (Animator animator in animators)
+        {
+            animator.enabled = true;
+            animator.StartPlayback();
+        }
+    }
+
+    public void DisableAnimation()
+    {
+        foreach (Animator animator in animators)
+        {
+            animator.StopPlayback();
+            animator.enabled = false;
         }
     }
 }
