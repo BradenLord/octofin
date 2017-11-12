@@ -20,7 +20,7 @@ public class ActorController : MonoBehaviour {
     public bool grounded;
     public LayerMask groundLayer;
 
-    public bool walking;
+    public bool running;
 
     public bool crouching;
     public bool blocking;
@@ -28,17 +28,27 @@ public class ActorController : MonoBehaviour {
     public bool hovering = false;  // Allows omni-directional control in the air
     public float hoverDrag = 2;
 
-    public float weaponSpeed = 1; // Shouldn't be here eventually
+    //Meta Booleans
+    public bool inCombat = false;
+    public bool hurt = false;
+    public bool alive = true;
+
+    public float weaponSpeed = 1; 
 
     private Rigidbody2D rigidBody;
     private CircleCollider2D feetCollider;
     private Animator[] animators;
+
+    private bool attacking = false;
 
 	void Awake () {
 
         rigidBody = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<CircleCollider2D>();
         animators = GetComponentsInChildren<Animator>();
+
+        UpdateAnimatorVariable("CanMove", canMove);
+        UpdateAnimatorVariable("Alive", alive);
     }
 
     void FixedUpdate() {
@@ -72,8 +82,8 @@ public class ActorController : MonoBehaviour {
 
         if (grounded)
         {
-            this.walking = !hovering && (Mathf.Abs(xForce) > 0);
-            UpdateAnimatorVariable("Walking", walking);
+            this.running = !hovering && (Mathf.Abs(xForce) > 0);
+            UpdateAnimatorVariable("Running", running);
         }
         else
         {
@@ -105,7 +115,7 @@ public class ActorController : MonoBehaviour {
             }
         }
 
-        if (!crouching && !blocking)
+        if (!crouching)
         {
             if (movementAxes.x * rigidBody.velocity.x < maxSpeed)
             {
@@ -130,7 +140,32 @@ public class ActorController : MonoBehaviour {
         }
     }
 
-    public void ActivatePrimary()
+    public void StartAttack()
+    {
+        if (!attacking && !hurt && alive)
+        {
+            attacking = true;
+            TriggerAnimatorVariable("StartAttack");
+        }
+    }
+
+    public void EndAttack()
+    {
+        EndAttack(false);
+    }
+
+    // True if the animation ended naturally, false if it is an interrupt
+    public void EndAttack(bool animationEnded)
+    {
+        if(!animationEnded)
+        {
+            TriggerAnimatorVariable("EndAttack");
+        }
+
+        attacking = false;
+    } 
+
+    public void Paralyze()
     {
         if (canMove)
         {
@@ -138,7 +173,7 @@ public class ActorController : MonoBehaviour {
         }
     }
 
-    public void DeactivatePrimary()
+    public void Unparalyze()
     {
         SetCanMove(true);
     }
@@ -192,7 +227,7 @@ public class ActorController : MonoBehaviour {
         }
     }
 
-    private void UpdateAnimatorVariable(string name, bool value)
+    public void UpdateAnimatorVariable(string name, bool value)
     {
         foreach (Animator animator in animators)
         {
@@ -200,11 +235,20 @@ public class ActorController : MonoBehaviour {
         }
     }
 
-    private void UpdateAnimatorVariable(string name, float value)
+    public void UpdateAnimatorVariable(string name, float value)
     {
         foreach (Animator animator in animators)
         {
             animator.SetFloat(name, value);
+        }
+    }
+
+    public void TriggerAnimatorVariable(string name)
+    {
+        foreach (Animator animator in animators)
+        {
+            animator.ResetTrigger(name);
+            animator.SetTrigger(name);
         }
     }
 }

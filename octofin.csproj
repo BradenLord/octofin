@@ -108,8 +108,8 @@
     <Compile Include="Assets\Anima2D\Scripts\SpriteMeshAnimation.cs" />
     <Compile Include="Assets\Anima2D\Scripts\SpriteMeshInstance.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\ActorController.cs" />
+    <Compile Include="Assets\Octofin\Scripts\Actors\Behaviors\AttackBehavior.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\Behaviors\BlockBehaviour.cs" />
-    <Compile Include="Assets\Octofin\Scripts\Actors\Behaviors\PrimaryActiveBehavior.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\PlayerInput.cs" />
     <Compile Include="Assets\Octofin\Scripts\Actors\SpriteManager.cs" />
     <Compile Include="Assets\Octofin\Scripts\DataCacheLoader.cs" />

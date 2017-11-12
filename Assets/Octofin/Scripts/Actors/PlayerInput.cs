@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour {
 
         if(Input.GetAxis("ActivatePrimary") == 1)
         {
-            actor.ActivatePrimary();
+            actor.StartAttack();
         }
 
         if (Input.GetAxis("Crouch") == 1)
